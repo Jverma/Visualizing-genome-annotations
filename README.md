@@ -33,5 +33,6 @@ This uses JavaScript framework [D3.js](https://github.com/mbostock/d3).
 - Each node is collapsibale, meaning the children will collapse into the node on click. 
 - Each node contains the information about the type of annotation it is encoding, and it's start & end. This can be accessed by moving the mouse over to the name (text) of the node. The values will pop-up on the screen. 
 
+See the visualization in action at [bl.ocks](http://bl.ocks.org/Jverma/4d8d73ad5f2bb39bab53)
 
 
