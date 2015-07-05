@@ -21,11 +21,12 @@ This uses JavaScript framework [D3.js](https://github.com/mbostock/d3).
 
 - We need to create a CSV file containing the relevent information. This uses a python script to parse GFF file. This is taken from [GFF Parser](https://github.com/Jverma/GFF-Parser). We have written a script ```main.py``` which will create a CSV file named ```parentChild.csv```. Choose the chromosome and the segment of the chromosome to explore. e.g - 
 
+        python main.py begin_segment end_segment chromsome gff
         python main.py 5000 50000 chromosomeI sample1.gff
   
 - Launch the ```gffTree.html``` into any browser. This will contain the tree visualization. 
 
-- Ih short, the main script here is ```main.py```. After running this as above, we can directly open the HTML file to view the tree.
+- In short, the main script here is ```main.py```. After running this as above, we can directly open the HTML file to view the tree.
 
 
 **Exploration:**
