@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Parent-child CSV file for visualization.
+# Parent-child csv file for visualization.
 # Author - Janu Verma
 # jv367@cornell.edu
 # @januverma
@@ -9,18 +9,22 @@ import csv
 from gff_parser import gffParser
 
 
-endChrom = int(sys.argv[1])
-input_file = open(sys.argv[2])
+beginChrom = int(sys.argv[1])
+endChrom = int(sys.argv[2])
+chrom = sys.argv[3]
+input_file = open(sys.argv[4])
 out = gffParser(input_file)
 with open('parentChild.csv', 'wb') as csvfile:
 	chromWriter = csv.writer(csvfile)
 	chromWriter.writerow(["name", "parent", "start", "end", "type"])
-	chromWriter.writerow(["chromosomeI", "null", 1, endChrom, "chromosome"])
-	genes = out.getGenes("chromosomeI")
+	chromWriter.writerow([chrom, "null", beginChrom, endChrom, "chromosome"])
+	genes = out.getGenes(chrom)
 	for gene in genes:
+		if (gene['start'] < beginChrom):
+			continue
 		if (gene['end'] > endChrom):
 			break
-		chromWriter.writerow([gene['Name'],"chromosomeI", gene['start'], gene['end'], "gene"])
+		chromWriter.writerow([gene['Name'],chrom, gene['start'], gene['end'], "gene"])
 		mRNA = out.getmRNA("chromosomeI", gene['Name'])
 		for transcript in mRNA:
 			chromWriter.writerow([transcript['Name'], gene['Name'], transcript['start'], transcript['end'], "transcript"])
